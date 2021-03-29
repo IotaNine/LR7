@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <ctime>
 
 struct element
@@ -25,7 +25,9 @@ void destructor(Queue& Q)
 {
     while (Q.size != 0)
     {
+        element* point = Q.fist;
         Q.first = Q.first->next_e;
+        delete point;
         Q.size--;
     }
 }
@@ -56,7 +58,9 @@ void pop(Queue& Q)
     if (Q.size != 0)
     {
         std::cout << "Element out: " << Q.first->data << std::endl;
+        element* point = Q.first;
         Q.first = Q.first->next_e;
+        delete point;
         Q.size--;
     }
     else
