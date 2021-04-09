@@ -3,7 +3,7 @@
 
 struct element
 {
-    element* next_e = nullptr;
+    element* next_e;
     int data;
 };
 
@@ -25,11 +25,12 @@ void destructor(Queue& Q)
 {
     while (Q.size != 0)
     {
-        element* point = Q.fist;
+        element* point = Q.first;
         Q.first = Q.first->next_e;
         delete point;
         Q.size--;
     }
+    Q.last = nullptr;
 }
 
 unsigned int size(const Queue& Q)
@@ -53,19 +54,20 @@ void push(Queue& Q, int N)
     Q.size++;
 }
 
-void pop(Queue& Q)
+int pop(Queue& Q)
 {
     if (Q.size != 0)
     {
-        std::cout << "Element out: " << Q.first->data << std::endl;
+        int data = Q.first->data;
         element* point = Q.first;
         Q.first = Q.first->next_e;
         delete point;
         Q.size--;
+        return data;
     }
     else
     {
-        std::cout << "The queue is empty" << std::endl;
+        return 0;
     }
 }
 
