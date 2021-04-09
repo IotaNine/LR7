@@ -23,13 +23,13 @@ void constructor(Queue& Q)
 
 void destructor(Queue& Q)
 {
-    while (Q.size != 0)
+    while (Q.first != nullptr)
     {
         element* point = Q.first;
         Q.first = Q.first->next_e;
         delete point;
-        Q.size--;
     }
+    Q.size = 0;
     Q.last = nullptr;
 }
 
