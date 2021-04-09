@@ -27,6 +27,7 @@ void destructor(Queue& Q)
     {
         element* point = Q.first;
         Q.first = Q.first->next_e;
+        point->next_e = nullptr;
         delete point;
     }
     Q.size = 0;
