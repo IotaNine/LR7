@@ -3,7 +3,7 @@
 
 struct element
 {
-    element* e_prev = nullptr;
+    element* e_prev;
     int data;
 };
 
@@ -45,13 +45,11 @@ void push(Stack& S, int N)
     }
     S.last = E;
     S.size++;
-}
-
-void pop(Stack& S)
+}int pop(Stack& S)
 {
     if (S.size != 0)
     {
-        std::cout << "Element out: " << S.last->data << std::endl;
+        int data =  S.last->data;
         element* point = S.last;
         S.last = S.last->e_prev;
         delete point;
@@ -59,7 +57,7 @@ void pop(Stack& S)
     }
     else
     {
-        std::cout << "The stack is empty" << std::endl;
+        return 0;
     }
 }
 
