@@ -25,6 +25,7 @@ void destructor(Stack& S)
     {
         element* point = S.last;
         S.last = S.last->e_prev;
+        point->e_prev = nullptr;
         delete point;
         S.size--;
     }
